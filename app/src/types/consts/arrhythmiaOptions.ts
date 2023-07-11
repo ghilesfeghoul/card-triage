@@ -1,0 +1,1 @@
+export const arrhythmiaOptions: string[] = ['AFib', 'AV Block', 'Pause', 'PSVC', 'PVC'];
