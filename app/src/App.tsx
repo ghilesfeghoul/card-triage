@@ -7,12 +7,15 @@ import AppNavbar from "./components/Navbar/AppNavbar";
 
 function App() {
     return (
-        <AppProvider>
-            <AppNavbar />
-            <AppContent />
-            <AppNotif />
+        <>
+            <AppProvider>
+                <AppNavbar />
+                <AppContent />
+                <AppNotif />
+            </AppProvider>
             <AppFooter />
-        </AppProvider>
+        </>
+
     );
 }
 

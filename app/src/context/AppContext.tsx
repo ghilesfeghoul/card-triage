@@ -11,15 +11,27 @@ interface Props {
 
 export const AppContext = createContext<any>({});
 
-const AppProvider: React.FC<Props> = ({ children }) => {
+const AppProvider: React.FC<Props> = ({children}) => {
     const [cards, setCards] = useState<Array<IPatient>>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [columns, setColumns] = useState<Array<IColumn>>([]);
     const [emptyResults, setEmptyResults] = useState<boolean>(false);
     const [showAddForm, setShowAddForm] = useState<boolean>(false);
     const [showUpdateForm, setShowUpdateForm] = useState<boolean>(false);
-    const [toDelete, setToDelete] = useState<IPatient>({created_date: "", id: -1, patient_name: '', status: StatusEnum.PENDING, arrhythmias: []});
-    const [toUpdate, setToUpdate] = useState<IPatient>({created_date: "", id: -1, patient_name: '', status: StatusEnum.PENDING, arrhythmias: []});
+    const [toDelete, setToDelete] = useState<IPatient>({
+        created_date: "",
+        id: -1,
+        patient_name: '',
+        status: StatusEnum.PENDING,
+        arrhythmias: []
+    });
+    const [toUpdate, setToUpdate] = useState<IPatient>({
+        created_date: "",
+        id: -1,
+        patient_name: '',
+        status: StatusEnum.PENDING,
+        arrhythmias: []
+    });
     const [showConfirm, setShowConfirm] = useState<boolean>(false);
     const [message, setMessage] = useState<string>('');
     const [showNotification, setShowNotification] = useState<boolean>(false);

@@ -25,3 +25,5 @@ To run this project in development environment, jump to the root folder (card-tr
 To run tests, open the app folder and run `npm test`
 
 To run this project in production environment, make sure you started json server (server folder location on the root directory), then open the app folder and build it with the following command `npm run build`
+
+Make sure you have _serve_ installed in your machine and run `serve -s build`

@@ -86,17 +86,17 @@ const AddPatient = () => {
                         />
                     </Form.Group>
 
-                    <Form.Group controlId="arrhythmias">
-                        <Form.Label>Arrhythmias</Form.Label>
-                        <Form.Control aria-required={true} as="select" multiple value={selectedArrhythmias}
-                                      onChange={handleArrhythmiaChange}>
-                            {arrhythmiaOptions.map((arrhythmia) => (
-                                <option key={arrhythmia} value={arrhythmia}>
-                                    {arrhythmia}
-                                </option>
-                            ))}
-                        </Form.Control>
-                    </Form.Group>
+                        <Form.Group controlId="arrhythmias">
+                            <Form.Label>Arrhythmias</Form.Label>
+                            <Form.Control aria-required={true} as="select" multiple value={selectedArrhythmias}
+                                          onChange={handleArrhythmiaChange}>
+                                {arrhythmiaOptions.map((arrhythmia) => (
+                                    <option key={arrhythmia} value={arrhythmia}>
+                                        {arrhythmia}
+                                    </option>
+                                ))}
+                            </Form.Control>
+                        </Form.Group>
 
                 </Modal.Body>
                 <Modal.Footer>

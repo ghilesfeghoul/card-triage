@@ -3,9 +3,9 @@ import React, {useContext} from "react";
 import IColumn from "../../types/interfaces/Column";
 import {Alert, Container, Row} from "react-bootstrap";
 import Column from "../Column/Column";
-import AddPatient from "../Patient/Add";
-import RemovePatient from "../Patient/Remove";
-import UpdatePatient from "../Patient/Update";
+import AddPatient from "../Patient/AddPatient";
+import RemovePatient from "../Patient/RemovePatient";
+import UpdatePatient from "../Patient/UpdatePatient";
 
 const AppContent = () => {
     const context = useContext(AppContext);

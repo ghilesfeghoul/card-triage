@@ -5,7 +5,7 @@ import React, {useContext, useMemo} from "react";
 import {StatusEnum} from "../../types/enums/StatusEnum";
 import {AppContext} from "../../context/AppContext";
 import IPatient from "../../types/interfaces/Patient";
-import ColumnCard from "./ColumnCard";
+import PatientCard from "../Patient/PatientCard";
 
 interface ColumnProps {
     column: IColumn,
@@ -13,10 +13,9 @@ interface ColumnProps {
 
 const Column = (props: ColumnProps) => {
     const context = useContext(AppContext);
-    const column: IColumn = props.column;
 
-    return useMemo(() => {  
-        console.log('column');
+    return useMemo(() => {
+        const column: IColumn = props.column;
         return (
             <Col lg={4} key={column.id}>
                 <Card className="mb-3 border-black">
@@ -30,13 +29,13 @@ const Column = (props: ColumnProps) => {
                     </CardHeader>
                     <Card.Body>
                         {column.cards.map((card: IPatient, index: number) => {
-                            return <ColumnCard key={index} patient={card}/>
+                            return <PatientCard key={index} patient={card}/>
                         })}
                     </Card.Body>
                 </Card>
             </Col>
         )
-    }, [column.cards?.length, context.isSearching]);
+    }, [props.column.cards?.length, context.isSearching]);
 }
 
 export default Column;

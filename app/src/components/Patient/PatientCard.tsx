@@ -5,15 +5,16 @@ import IPatient from "../../types/interfaces/Patient";
 import {arrhythmiaColors} from "../../types/consts/arrhythmiaColors";
 import {AppContext} from "../../context/AppContext";
 
-type ColumnCardProps = {
+type PatientCardProps = {
     patient: IPatient,
 };
 
-const ColumnCard = ({patient}: ColumnCardProps) => {
+const PatientCard = ({patient}: PatientCardProps) => {
     const context = useContext(AppContext);
-    const date = new Date(patient.created_date);
 
     return useMemo(() => {
+        const date = new Date(patient.created_date);
+
         return (
             <Card className="mb-3 cursor-grab border-black">
                 <Card.Body>
@@ -38,17 +39,15 @@ const ColumnCard = ({patient}: ColumnCardProps) => {
                         {patient.status === StatusEnum.PENDING &&
                             <>
                                 <Dropdown.Item
-                                    onClick={
-                                        async () => {
+                                    onClick={async () => {
                                             await context.moveToColumn(patient, StatusEnum.DONE.toString())
                                         }}
                                 >
                                     Move to DONE
                                 </Dropdown.Item>
-                                <Dropdown.Item
-                                    onClick={
+                                <Dropdown.Item onClick={
                                         async () => {
-                                            await context.moveToColumn(patient,  StatusEnum.REJECTED.toString())
+                                            await context.moveToColumn(patient, StatusEnum.REJECTED.toString())
                                         }}
                                 >
                                     Move to REJECTED
@@ -57,8 +56,7 @@ const ColumnCard = ({patient}: ColumnCardProps) => {
                         }
                         {patient.status === StatusEnum.DONE &&
                             <>
-                                <Dropdown.Item
-                                    onClick={
+                                <Dropdown.Item onClick={
                                         async () => {
                                             await context.moveToColumn(patient, StatusEnum.REJECTED.toString())
                                         }}
@@ -69,8 +67,7 @@ const ColumnCard = ({patient}: ColumnCardProps) => {
                         }
                         {patient.status === StatusEnum.REJECTED &&
                             <>
-                                <Dropdown.Item
-                                    onClick={
+                                <Dropdown.Item onClick={
                                         async () => {
                                             await context.moveToColumn(patient, StatusEnum.DONE.toString())
                                         }}
@@ -80,12 +77,12 @@ const ColumnCard = ({patient}: ColumnCardProps) => {
                             </>
                         }
                         <Dropdown.Divider/>
-                        <Dropdown.Item onClick={async () => {
-                            context.handleShowUpdateForm(patient)
-                        }}>Update</Dropdown.Item>
-                        <Dropdown.Item onClick={async () => {
-                            context.handleShowConfirm(patient)
-                        }}>Delete</Dropdown.Item>
+                        <Dropdown.Item onClick={async () => {context.handleShowUpdateForm(patient)}}>
+                            Update
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={async () => {context.handleShowConfirm(patient)}}>
+                            Delete
+                        </Dropdown.Item>
                     </DropdownButton>
                 </Card.Footer>
             </Card>
@@ -93,4 +90,4 @@ const ColumnCard = ({patient}: ColumnCardProps) => {
     }, [patient.patient_name, patient.arrhythmias, context.toDelete]);
 };
 
-export default ColumnCard;
+export default PatientCard;
